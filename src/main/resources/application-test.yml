@@ -3,13 +3,10 @@ spring:
   application:
     name: iss-api-gateway
   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-    gateway:
+    kubernetes:
       discovery:
-        locator:
-          enabled: true
+          enabled: false
+    gateway:
       routes:
         - id: iss-payment-service
           uri: lb://iss-payment-service
@@ -43,8 +40,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'        
-            
+        include: '*' 
+                  
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"            
