@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: iss-api-gateway
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: iss-payment-service
+          uri: lb://iss-payment-service
+          predicates:
+            - Path=/iss-payment-service/**
+          filters:
+            - RewritePath=/iss-payment-service/(?<path>.*), /$\{path}
+        - id: iss-policy-search-service
+          uri: lb://iss-policy-search-service
+          predicates:
+            - Path=/iss-policy-search-service/**
+          filters:
+            - RewritePath=/iss-policy-search-service/(?<path>.*), /$\{path}
+        - id: iss-policy-service
+          uri: lb://iss-policy-service
+          predicates:
+            - Path=/iss-policy-service/**
+          filters:
+            - RewritePath=/iss-policy-service/(?<path>.*), /$\{path}
+        - id: iss-product-service
+          uri: lb://iss-product-service
+          predicates:
+            - Path=/iss-product-service/**
+          filters:
+            - RewritePath=/iss-product-service/(?<path>.*), /$\{path}
+            
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"            
+            
