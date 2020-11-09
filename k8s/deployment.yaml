@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iss-api-gateway
+  labels:
+    app: iss-api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iss-api-gateway
+  template:
+    metadata:
+      labels:
+        app: iss-api-gateway
+    spec:
+      containers:
+      - name: iss-api-gateway
+        image: fpoirier2020/iss-api-gateway
+        ports:
+        - containerPort: 8085
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iss-api-gateway
+  labels:
+    app: iss-api-gateway
+spec:
+  ports:
+  - port: 8085
+    protocol: TCP
+  selector:
+    app: iss-api-gateway
+  type: NodePort
