@@ -25,6 +25,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 		<testcontainer.version>1.14.3</testcontainer.version>
         <code.coverage.exclusions>**/gateway/Application.java</code.coverage.exclusions>
+        <git.repository>MasterCloudApps-Projects/iss-api-gateway</git.repository>
+        <project.scm.id>github</project.scm.id>
 	</properties>
 
 	<dependencies>
@@ -77,17 +79,6 @@
             <scope>test</scope>
         </dependency> 
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR8</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -118,6 +109,16 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>			
 		</plugins>
 	</build>	
 	<profiles>
@@ -278,7 +279,9 @@
 			</build>
 		</profile>
 	</profiles>
-
+    <scm>
+        <developerConnection>scm:git:https://github.com/${git.repository}.git</developerConnection>
+    </scm>
 	<distributionManagement>
 		<repository>
 			<id>github</id>
@@ -286,5 +289,22 @@
 			<url>https://maven.pkg.github.com/MasterCloudApps-Projects/iss-api-gateway</url>
 		</repository>
 	</distributionManagement>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream-dependencies</artifactId>
+				<version>Horsham.SR8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
