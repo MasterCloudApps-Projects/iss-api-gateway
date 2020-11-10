@@ -9,11 +9,11 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath />
 	</parent>
-	
+
 	<groupId>es.urjc.code</groupId>
 	<artifactId>iss-api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<name>iss-api-gateway</name>
 	<description>Api gateway service</description>
 
@@ -21,19 +21,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<testcontainer.version>1.14.3</testcontainer.version>
-        <code.coverage.exclusions>**/gateway/Application.java</code.coverage.exclusions>
-        <git.repository>MasterCloudApps-Projects/iss-api-gateway</git.repository>
-        <project.scm.id>github</project.scm.id>
+		<code.coverage.exclusions>**/gateway/Application.java</code.coverage.exclusions>
+		<git.repository>MasterCloudApps-Projects/iss-api-gateway</git.repository>
+		<project.scm.id>github</project.scm.id>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>				
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
@@ -47,37 +47,37 @@
 			<artifactId>spring-cloud-starter-kubernetes-loadbalancer</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-sleuth</artifactId>
-		</dependency>	
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>	
+			<artifactId>spring-boot-starter-test</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
-			</exclusions>					
+			</exclusions>
 			<scope>test</scope>
 		</dependency>
-        <!-- JUnit 5 integration with testcontainer -->
+		<!-- JUnit 5 integration with testcontainer -->
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>${testcontainer.version}</version>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency> 
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -85,10 +85,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>          				
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -109,18 +109,18 @@
 					</execution>
 				</executions>
 			</plugin>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <configuration>
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
-                </configuration>
-            </plugin>			
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 		</plugins>
-	</build>	
+	</build>
 	<profiles>
 		<profile>
 			<id>integration-test</id>
@@ -235,17 +235,17 @@
 							</execution>
 						</executions>
 					</plugin>
-		            <plugin>
-		                <groupId>org.apache.maven.plugins</groupId>
-		                <artifactId>maven-surefire-plugin</artifactId>
-		                <version>3.0.0-M3</version>
-		                <configuration>
-		                    <skipTests>true</skipTests>
-		                </configuration>
-		            </plugin>					
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M3</version>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
 				</plugins>
 			</build>
-		</profile>		
+		</profile>
 		<profile>
 			<id>sonar</id>
 			<properties>
@@ -254,7 +254,7 @@
 				<sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
 				<sonar.projectKey>iss-api-gateway</sonar.projectKey>
 				<sonar.organization>francois-poirier</sonar.organization>
-			    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+				<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 			</properties>
 			<activation>
@@ -279,9 +279,9 @@
 			</build>
 		</profile>
 	</profiles>
-    <scm>
-        <developerConnection>scm:git:https://github.com/${git.repository}.git</developerConnection>
-    </scm>
+	<scm>
+		<developerConnection>scm:git:https://github.com/${git.repository}.git</developerConnection>
+	</scm>
 	<distributionManagement>
 		<repository>
 			<id>github</id>
