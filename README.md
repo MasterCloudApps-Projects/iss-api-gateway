@@ -11,6 +11,8 @@ We decided to implement it in an extremely simplified version of an insurance sa
 * Service discovery
 * Running background jobs
 
+![Architecture](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/iss-architecture.jpg?raw=true)
+
 The complexity of “business microservices” was hidden by using a Gateway pattern. This component was responsible for the proper redirection of requests to the appropriate services based on the configuration. The frontend application could only communicate with this component. This component showed the usage of non-blocking http declarative clients.
 
 ## How to run Application
