@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: microservices.info
+    http:
+      paths:
+      - path: /iss-policy-service
+        backend:
+          serviceName: iss-policy-service
+          servicePort: 8085
+      - path: /iss-policy-search-service
+        backend:
+          serviceName: iss-policy-search-service
+          servicePort: 8085
+      - path: /iss-product-service
+        backend:
+          serviceName: iss-product-service
+          servicePort: 8085
+      - path: /iss-payment-service
+        backend:
+          serviceName: iss-payment-service
+          servicePort: 8085
