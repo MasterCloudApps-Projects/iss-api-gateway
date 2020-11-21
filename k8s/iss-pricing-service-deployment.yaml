@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iss-pricing-service
+  labels:
+    app: iss-pricing-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iss-pricing-service
+  template:
+    metadata:
+      labels:
+        app: iss-pricing-service
+    spec:
+      containers:
+      - name: iss-pricing-service
+        image: fpoirier2020/iss-pricing-service
+        ports:
+        - containerPort: 8080
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: postgres_user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: postgres_password
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: hostname-config
+              key: postgres_host
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iss-pricing-service
+  labels:
+    app: iss-pricing-service
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: iss-pricing-service

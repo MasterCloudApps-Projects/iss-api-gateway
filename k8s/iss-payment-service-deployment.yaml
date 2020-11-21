@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iss-payment-service
+  labels:
+    app: iss-payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iss-payment-service
+  template:
+    metadata:
+      labels:
+        app: iss-payment-service
+    spec:
+      containers:
+      - name: iss-payment-service
+        image: fpoirier2020/iss-payment-service
+        ports:
+        - containerPort: 8084
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: postgres_user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: postgres_password
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: hostname-config
+              key: postgres_host
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iss-payment-service
+  labels:
+    app: iss-payment-service
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 8084
+    protocol: TCP
+  selector:
+    app: iss-payment-service

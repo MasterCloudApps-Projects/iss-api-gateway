@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iss-product-service
+  labels:
+    app: iss-product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iss-product-service
+  template:
+    metadata:
+      labels:
+        app: iss-product-service
+    spec:
+      containers:
+      - name: iss-product-service
+        image: fpoirier2020/iss-product-service
+        ports:
+        - containerPort: 8081
+        env:
+        - name: MONGO_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb
+              key: database-name
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: database-user
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: database-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iss-product-service
+  labels:
+    app: iss-product-service
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 8081
+    protocol: TCP
+  selector:
+    app: iss-product-service
