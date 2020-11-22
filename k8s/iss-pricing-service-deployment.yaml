@@ -24,17 +24,22 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: postgres_user
+              key: POSTGRES_USER
         - name: POSTGRES_PASSWORD
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: postgres_password
+              key: POSTGRES_PASSWORD
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
-              name: hostname-config
-              key: postgres_host
+              name: postgres-config
+              key: POSTGRES_HOST
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_DB
 ---
 apiVersion: v1
 kind: Service

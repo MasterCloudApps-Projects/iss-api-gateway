@@ -23,18 +23,23 @@ spec:
         - name: MONGO_DATABASE
           valueFrom:
             configMapKeyRef:
-              name: mongodb
-              key: database-name
+              name: mongodb-config
+              key: MONGO_DATABASE
         - name: MONGO_USERNAME
           valueFrom:
-            secretKeyRef:
-              name: mongodb
-              key: database-user
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGO_USERNAME
         - name: MONGO_PASSWORD
           valueFrom:
-            secretKeyRef:
-              name: mongodb
-              key: database-password
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGO_PASSWORD
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGO_HOST
 ---
 apiVersion: v1
 kind: Service

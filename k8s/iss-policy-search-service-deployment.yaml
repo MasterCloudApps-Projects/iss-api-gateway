@@ -19,6 +19,12 @@ spec:
         image: fpoirier2020/iss-policy-search-service
         ports:
         - containerPort: 8083
+        env:
+        - name: KAFKA_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kafka-config
+              key: KAFKA_HOST        
 ---
 apiVersion: v1
 kind: Service
