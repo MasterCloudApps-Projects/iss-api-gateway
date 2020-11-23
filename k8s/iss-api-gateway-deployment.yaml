@@ -26,6 +26,7 @@ metadata:
   name: iss-api-gateway
   labels:
     app: iss-api-gateway
+    spring-boot: "true"
 spec:
   ports:
   - port: 8085

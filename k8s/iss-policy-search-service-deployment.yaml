@@ -32,6 +32,7 @@ metadata:
   name: iss-policy-search-service
   labels:
     app: iss-policy-search-service
+    spring-boot: "true"
 spec:
   ports:
   - port: 8083
