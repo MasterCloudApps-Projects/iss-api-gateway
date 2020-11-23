@@ -5,7 +5,4 @@ metadata:
   labels:
     app: mongodb
 data:
-  MONGO_DATABASE: mongodb
-  MONGO_USERNAME: mongodbadmin
-  MONGO_PASSWORD: admin123
-  MONGO_HOST: mongodb-service
+  database-name: admin
