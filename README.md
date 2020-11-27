@@ -116,21 +116,22 @@ echo $MINIKUBE_IP mastercloudapps.com | sudo tee --append /etc/hosts >/dev/null
 kubectl get pods,services
 ```
 ![Pods](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/pods-services.png?raw=true)
-```
+
 19. run dashboard and check status services in dashboard
 ```
 minikube dashboard
 ```
-```
+
 ![Dashboard](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
 
-```
+
 20. an example of endpoint execution
-```
+
 ![Mastercloudapps](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true)
-```
+
 
 21. Deleting all the Resources
+
 ```
 kubectl delete -f k8s/ingress.yaml
 kubectl delete -f k8s/iss-api-gateway-deployment.yaml
@@ -152,6 +153,7 @@ kubectl delete -f k8s/postgres/postgres.yaml
 kubectl delete -f k8s/postgres/volume.yaml
 kubectl delete -f k8s/postgres/postgres-config.yaml
 ```
+
 22. Stop minikube
 ```
 minikue stop
