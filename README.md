@@ -121,11 +121,12 @@ kubectl get pods,services
 ```
 minikube dashboard
 ```
-![Dashboard service](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
+![Dashboard](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
+
 ```
 1. an example of endpoint execution
 ```
-![Mastercloudapps domain](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true)
+![Mastercloudapps](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true)
 ```
 
 ## Deleting all the Resources
