@@ -29,3 +29,130 @@ In order for this approach to work, of course, you need to have Docker installed
 ## How to run the Unit Test
 
 ```mvn -B clean verify```
+
+## Deploy solution in minikube
+
+# Prerequisites
+
+- Minikube cluster with kubectl installed and configured to use your cluster
+
+1. Run minikube
+```
+minikube start --memory 8192
+```
+1. Create a ClusterRoleBinding for default namespace
+```
+kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
+```
+1. Create a config map of Postgres
+```
+kubectl apply -f k8s/postgres/postgres-config.yaml
+```
+1. Deploy Postgres with a persistent volume claim
+```
+kubectl apply -f k8s/postgres/volume.yaml
+kubectl apply -f k8s/postgres/postgres.yaml
+```
+1. Create a config map and secret of Mongodb
+```
+kubectl apply -f k8s/mongodb/mongodb-config.yaml
+kubectl apply -f k8s/mongodb/mongodb-secret.yaml
+```
+1. Deploy Mongodb with a persistent volume claim
+```
+kubectl apply -f k8s/mongodb/volume.yaml
+kubectl apply -f k8s/mongodb/mongodb.yaml
+```
+1. Create a config map of Kafka service
+```
+kubectl apply -f k8s/kafka/kafka-config.yaml
+```
+1. Deploy Zookeeper and Kafka Cluster
+```
+kubectl apply -f k8s/kafka/zookeeper-services.yaml
+kubectl apply -f k8s/kafka/zookeeper-cluster.yaml
+kubectl apply -f k8s/kafka/kafka-service.yaml
+kubectl apply -f k8s/kafka/kafka-cluster.yaml
+```
+1. Deploy Pricing service
+```
+kubectl apply -f k8s/iss-pricing-service-deployment.yaml
+```
+1. Deploy Product service
+```
+kubectl apply -f k8s/iss-product-service-deployment.yaml
+```
+1. Deploy Policy service
+```
+kubectl apply -f k8s/iss-policy-service-deployment.yaml
+```
+1. Deploy Policy search service
+```
+kubectl apply -f k8s/iss-policy-search-service-deployment.yaml
+```
+1. Deploy Payment service
+```
+kubectl apply -f k8s/iss-payment-service-deployment.yaml
+```
+1. Deploy Api gateway service
+```
+kubectl apply -f k8s/iss-api-gateway-deployment.yaml
+```
+1. Active ingress controller plugin
+```
+minikube addons enable ingress
+```
+1. Deploy ingress
+```
+kubectl apply -f k8s/ingress.yaml
+```
+1. Define mastercloudapps.com local DNS
+```
+export MINIKUBE_IP=$(minikube ip)
+echo $MINIKUBE_IP mastercloudapps.com | sudo tee --append /etc/hosts >/dev/null
+```
+1. Check status pods and services with kubectl get pods,services
+```
+kubectl get pods,services
+```
+https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/pods-services.png?raw=true
+```
+1. run dashboard and check status services in dashboard
+```
+minikube dashboard
+```
+https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true
+```
+1. an example of endpoint execution
+```
+https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true
+```
+
+## Deleting all the Resources
+```
+kubectl delete -f k8s/ingress.yaml
+kubectl delete -f k8s/iss-api-gateway-deployment.yaml
+kubectl delete -f k8s/iss-payment-service-deployment.yaml
+kubectl delete -f k8s/iss-policy-search-service-deployment.yaml
+kubectl delete -f k8s/iss-policy-service-deployment.yaml
+kubectl delete -f k8s/iss-product-service-deployment.yaml
+kubectl delete -f k8s/iss-pricing-service-deployment.yaml
+
+kubectl delete -f k8s/kafka/kafka-config.yaml
+kubectl delete -f k8s/kafka/kafka-cluster.yaml
+kubectl delete -f k8s/kafka/kafka-service.yaml
+kubectl delete -f k8s/kafka/zookeeper-cluster.yaml
+kubectl delete -f k8s/kafka/zookeeper-services.yaml
+
+kubectl delete -f k8s/mongodb/mongodb.yaml
+kubectl delete -f k8s/mongodb/volume.yaml
+kubectl delete -f k8s/mongodb/mongodb-config.yaml
+kubectl delete -f k8s/mongodb/mongodb-secret.yaml
+
+kubectl delete -f k8s/postgres/postgres.yaml
+kubectl delete -f k8s/postgres/volume.yaml
+kubectl delete -f k8s/postgres/postgres-config.yaml
+
+```
+## Stop minikube
+minikue stop
