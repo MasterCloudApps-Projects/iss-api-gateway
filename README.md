@@ -115,17 +115,17 @@ echo $MINIKUBE_IP mastercloudapps.com | sudo tee --append /etc/hosts >/dev/null
 ```
 kubectl get pods,services
 ```
-https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/pods-services.png?raw=true
+![Pods](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/pods-services.png?raw=true)
 ```
 1. run dashboard and check status services in dashboard
 ```
 minikube dashboard
 ```
-https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true
+![Dashboard service](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
 ```
 1. an example of endpoint execution
 ```
-https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true
+![Mastercloudapps domain](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true)
 ```
 
 ## Deleting all the Resources
