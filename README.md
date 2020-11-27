@@ -121,6 +121,7 @@ kubectl get pods,services
 ```
 minikube dashboard
 ```
+```
 ![Dashboard](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
 
 ```
