@@ -156,5 +156,5 @@ kubectl delete -f k8s/postgres/postgres-config.yaml
 
 22. Stop minikube
 ```
-minikue stop
+minikube stop
 ```
