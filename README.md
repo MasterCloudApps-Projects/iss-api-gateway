@@ -40,84 +40,84 @@ In order for this approach to work, of course, you need to have Docker installed
 ```
 minikube start --memory 8192
 ```
-1. Create a ClusterRoleBinding for default namespace
+2. Create a ClusterRoleBinding for default namespace
 ```
 kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
 ```
-1. Create a config map of Postgres
+3. Create a config map of Postgres
 ```
 kubectl apply -f k8s/postgres/postgres-config.yaml
 ```
-1. Deploy Postgres with a persistent volume claim
+4. Deploy Postgres with a persistent volume claim
 ```
 kubectl apply -f k8s/postgres/volume.yaml
 kubectl apply -f k8s/postgres/postgres.yaml
 ```
-1. Create a config map and secret of Mongodb
+5. Create a config map and secret of Mongodb
 ```
 kubectl apply -f k8s/mongodb/mongodb-config.yaml
 kubectl apply -f k8s/mongodb/mongodb-secret.yaml
 ```
-1. Deploy Mongodb with a persistent volume claim
+6. Deploy Mongodb with a persistent volume claim
 ```
 kubectl apply -f k8s/mongodb/volume.yaml
 kubectl apply -f k8s/mongodb/mongodb.yaml
 ```
-1. Create a config map of Kafka service
+7. Create a config map of Kafka service
 ```
 kubectl apply -f k8s/kafka/kafka-config.yaml
 ```
-1. Deploy Zookeeper and Kafka Cluster
+8. Deploy Zookeeper and Kafka Cluster
 ```
 kubectl apply -f k8s/kafka/zookeeper-services.yaml
 kubectl apply -f k8s/kafka/zookeeper-cluster.yaml
 kubectl apply -f k8s/kafka/kafka-service.yaml
 kubectl apply -f k8s/kafka/kafka-cluster.yaml
 ```
-1. Deploy Pricing service
+9. Deploy Pricing service
 ```
 kubectl apply -f k8s/iss-pricing-service-deployment.yaml
 ```
-1. Deploy Product service
+10. Deploy Product service
 ```
 kubectl apply -f k8s/iss-product-service-deployment.yaml
 ```
-1. Deploy Policy service
+11. Deploy Policy service
 ```
 kubectl apply -f k8s/iss-policy-service-deployment.yaml
 ```
-1. Deploy Policy search service
+12. Deploy Policy search service
 ```
 kubectl apply -f k8s/iss-policy-search-service-deployment.yaml
 ```
-1. Deploy Payment service
+13. Deploy Payment service
 ```
 kubectl apply -f k8s/iss-payment-service-deployment.yaml
 ```
-1. Deploy Api gateway service
+14. Deploy Api gateway service
 ```
 kubectl apply -f k8s/iss-api-gateway-deployment.yaml
 ```
-1. Active ingress controller plugin
+15. Active ingress controller plugin
 ```
 minikube addons enable ingress
 ```
-1. Deploy ingress
+16. Deploy ingress
 ```
 kubectl apply -f k8s/ingress.yaml
 ```
-1. Define mastercloudapps.com local DNS
+17. Define mastercloudapps.com local DNS
 ```
 export MINIKUBE_IP=$(minikube ip)
 echo $MINIKUBE_IP mastercloudapps.com | sudo tee --append /etc/hosts >/dev/null
 ```
-1. Check status pods and services with kubectl get pods,services
+18. Check status pods and services with kubectl get pods,services
 ```
 kubectl get pods,services
 ```
 ![Pods](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/pods-services.png?raw=true)
 ```
-1. run dashboard and check status services in dashboard
+19. run dashboard and check status services in dashboard
 ```
 minikube dashboard
 ```
@@ -125,12 +125,12 @@ minikube dashboard
 ![Dashboard](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/services-dashboard.png?raw=true)
 
 ```
-1. an example of endpoint execution
+20. an example of endpoint execution
 ```
 ![Mastercloudapps](https://github.com/MasterCloudApps-Projects/iss-api-gateway/blob/master/images/mastercloudapps-example.png?raw=true)
 ```
 
-## Deleting all the Resources
+21. Deleting all the Resources
 ```
 kubectl delete -f k8s/ingress.yaml
 kubectl delete -f k8s/iss-api-gateway-deployment.yaml
@@ -139,22 +139,20 @@ kubectl delete -f k8s/iss-policy-search-service-deployment.yaml
 kubectl delete -f k8s/iss-policy-service-deployment.yaml
 kubectl delete -f k8s/iss-product-service-deployment.yaml
 kubectl delete -f k8s/iss-pricing-service-deployment.yaml
-
 kubectl delete -f k8s/kafka/kafka-config.yaml
 kubectl delete -f k8s/kafka/kafka-cluster.yaml
 kubectl delete -f k8s/kafka/kafka-service.yaml
 kubectl delete -f k8s/kafka/zookeeper-cluster.yaml
 kubectl delete -f k8s/kafka/zookeeper-services.yaml
-
 kubectl delete -f k8s/mongodb/mongodb.yaml
 kubectl delete -f k8s/mongodb/volume.yaml
 kubectl delete -f k8s/mongodb/mongodb-config.yaml
 kubectl delete -f k8s/mongodb/mongodb-secret.yaml
-
 kubectl delete -f k8s/postgres/postgres.yaml
 kubectl delete -f k8s/postgres/volume.yaml
 kubectl delete -f k8s/postgres/postgres-config.yaml
-
 ```
-## Stop minikube
+22. Stop minikube
+```
 minikue stop
+```
