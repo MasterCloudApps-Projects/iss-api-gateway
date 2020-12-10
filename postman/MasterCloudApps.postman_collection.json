@@ -74,13 +74,44 @@
 			"response": []
 		},
 		{
-			"name": "CREATE Offer",
+			"name": "CREATE Offer Car",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\"productCode\":\"CAR\",\n\"policyFrom\": \"2020-04-16\",\n\"policyTo\": \"2021-04-15\",\n\"selectedCovers\":[\"C1\"],\n\"answers\":[{\"questionCode\":\"NUM_OF_CLAIM\",\"answer\":1}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/offers",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-service",
+						"api",
+						"v1",
+						"offers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Offer Farm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"productCode\":\"FAI\",\n\"policyFrom\": \"2020-04-16\",\n\"policyTo\": \"2021-04-15\",\n\"selectedCovers\":[\"C4\"],\n\"answers\":[{\"questionCode\":\"NUM_OF_CLAIM\",\"answer\":3},{\"questionCode\":\"FLOOD\",\"answer\":\"YES\"}]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
