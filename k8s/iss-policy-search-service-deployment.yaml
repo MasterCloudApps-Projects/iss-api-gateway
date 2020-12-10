@@ -24,7 +24,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: kafka-config
-              key: KAFKA_HOST        
+              key: KAFKA_HOST       
 ---
 apiVersion: v1
 kind: Service
