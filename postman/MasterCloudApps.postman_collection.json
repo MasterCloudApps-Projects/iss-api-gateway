@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "1578f447-9772-4276-8ab1-19614802ee4f",
+		"name": "MasterCloudApps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-product-service/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-product-service",
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Product by code",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-product-service/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-product-service",
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Offer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"productCode\":\"CAR\",\n\"policyFrom\": \"2020-04-16\",\n\"policyTo\": \"2021-04-15\",\n\"selectedCovers\":[\"C1\"],\n\"answers\":[{\"questionCode\":\"NUM_OF_CLAIM\",\"answer\":1}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/offers",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-service",
+						"api",
+						"v1",
+						"offers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE Policy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"offerNumber\": \"03ae436e-4519-48a8-a4c4-29958745dae7\",\n  \"agentLogin\": \"admin\",\n  \"policyHolder\": {\n    \"firstName\": \"François\",\n    \"lastName\": \"Poirier\",\n    \"taxId\": \"1111111111\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-service",
+						"api",
+						"v1",
+						"policies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TERMNATE Policy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"offerNumber\": \"03ae436e-4519-48a8-a4c4-29958745dae7\",\n  \"agentLogin\": \"admin\",\n  \"policyHolder\": {\n    \"firstName\": \"François\",\n    \"lastName\": \"Poirier\",\n    \"taxId\": \"1111111111\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-service",
+						"api",
+						"v1",
+						"policies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET policy by policyNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies/eff234b7-2d9a-4255-9823-b4fd67b1eacd",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-service",
+						"api",
+						"v1",
+						"policies",
+						"eff234b7-2d9a-4255-9823-b4fd67b1eacd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Policy full text",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-policy-search-service/api/v1/policies/eff234b7-2d9a-4255-9823-b4fd67b1eacd",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-policy-search-service",
+						"api",
+						"v1",
+						"policies",
+						"eff234b7-2d9a-4255-9823-b4fd67b1eacd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-payment-service/api/v1/accounts",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-payment-service",
+						"api",
+						"v1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account by account number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mastercloudapps.com/iss-payment-service/api/v1/accounts",
+					"protocol": "http",
+					"host": [
+						"mastercloudapps",
+						"com"
+					],
+					"path": [
+						"iss-payment-service",
+						"api",
+						"v1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
