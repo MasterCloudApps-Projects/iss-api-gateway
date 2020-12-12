@@ -57,7 +57,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://mastercloudapps.com/iss-product-service/api/v1/products",
+					"raw": "http://mastercloudapps.com/iss-product-service/api/v1/products/HSI",
 					"protocol": "http",
 					"host": [
 						"mastercloudapps",
@@ -67,7 +67,8 @@
 						"iss-product-service",
 						"api",
 						"v1",
-						"products"
+						"products",
+						"HSI"
 					]
 				}
 			},
@@ -142,7 +143,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"offerNumber\": \"03ae436e-4519-48a8-a4c4-29958745dae7\",\n  \"agentLogin\": \"admin\",\n  \"policyHolder\": {\n    \"firstName\": \"François\",\n    \"lastName\": \"Poirier\",\n    \"taxId\": \"1111111111\"\n  }\n}",
+					"raw": "{\n  \"offerNumber\": \"1e51cf5e-3d5f-470c-b944-909f2c5f3926\",\n  \"agentLogin\": \"admin\",\n  \"policyHolder\": {\n    \"firstName\": \"François\",\n    \"lastName\": \"Poirier\",\n    \"taxId\": \"1111111111\"\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,7 +174,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"offerNumber\": \"03ae436e-4519-48a8-a4c4-29958745dae7\",\n  \"agentLogin\": \"admin\",\n  \"policyHolder\": {\n    \"firstName\": \"François\",\n    \"lastName\": \"Poirier\",\n    \"taxId\": \"1111111111\"\n  }\n}",
+					"raw": "{\n    \"policyNumber\": \"eff234b7-2d9a-4255-9823-b4fd67b1eacd\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,7 +182,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies",
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies/terminate",
 					"protocol": "http",
 					"host": [
 						"mastercloudapps",
@@ -191,7 +192,8 @@
 						"iss-policy-service",
 						"api",
 						"v1",
-						"policies"
+						"policies",
+						"terminate"
 					]
 				}
 			},
@@ -203,7 +205,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies/eff234b7-2d9a-4255-9823-b4fd67b1eacd",
+					"raw": "http://mastercloudapps.com/iss-policy-service/api/v1/policies/0d1cd6ec-98b6-4e8d-abf5-632ee958ba18",
 					"protocol": "http",
 					"host": [
 						"mastercloudapps",
@@ -214,7 +216,7 @@
 						"api",
 						"v1",
 						"policies",
-						"eff234b7-2d9a-4255-9823-b4fd67b1eacd"
+						"0d1cd6ec-98b6-4e8d-abf5-632ee958ba18"
 					]
 				}
 			},
@@ -226,7 +228,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://mastercloudapps.com/iss-policy-search-service/api/v1/policies/eff234b7-2d9a-4255-9823-b4fd67b1eacd",
+					"raw": "http://mastercloudapps.com/iss-policy-search-service/api/v1/policies/12",
 					"protocol": "http",
 					"host": [
 						"mastercloudapps",
@@ -237,7 +239,7 @@
 						"api",
 						"v1",
 						"policies",
-						"eff234b7-2d9a-4255-9823-b4fd67b1eacd"
+						"12"
 					]
 				}
 			},
@@ -271,7 +273,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://mastercloudapps.com/iss-payment-service/api/v1/accounts",
+					"raw": "http://mastercloudapps.com/iss-payment-service/api/v1/accounts/c29e7493-552d-4145-80d6-492a5805cd22",
 					"protocol": "http",
 					"host": [
 						"mastercloudapps",
@@ -281,7 +283,8 @@
 						"iss-payment-service",
 						"api",
 						"v1",
-						"accounts"
+						"accounts",
+						"c29e7493-552d-4145-80d6-492a5805cd22"
 					]
 				}
 			},
