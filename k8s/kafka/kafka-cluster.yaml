@@ -28,4 +28,4 @@ spec:
         - name: KAFKA_ZOOKEEPER_CONNECT
           value: zoo1:2181,zoo2:2181,zoo3:2181
         - name: KAFKA_CREATE_TOPICS
-          value: policy-topic:2:1
+          value: policy-topic:1:1
